@@ -1,0 +1,553 @@
+.home-grid{
+    display:grid;
+    grid-template-columns: 500px 500px 350px;
+    gap:23px;
+  }
+
+
+  .welcome-profile{
+    background-color: rgba(255, 255, 255, 0.464);
+    font-size: 23px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:2px;
+    margin-top:290px;
+    margin-bottom:290px;
+    margin-left:250px;
+    border: 2px solid rgb(242, 242, 242);
+    border-radius: 5px;
+    font-family: Inria Sans;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+
+  .gallery, .lost-btn, .pet-info{
+    background-color: rgb(255, 255, 255);
+    box-shadow:rgba(147, 133, 226, 0.5) 0 1px 30px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .pet-info:hover, .lost-btn:hover, .gallery:hover{
+    box-shadow: rgba(87, 70, 186, 0.5) 0 1px 30px;
+    transform: translateY(-5px);
+  }
+
+
+  .lost-btn{
+    height:150px;
+    background-color: rgba(217, 218, 243, 1);
+    display:grid;
+    grid-template-columns: 400px 100px;
+  }
+
+  .lost-btn-paw{
+    padding-top: 40px;
+    
+    padding-bottom:5px;
+    
+  }
+
+  .gallery-bio{
+    margin-right:10px;
+  }
+
+  .gallery{
+    height:250px;
+  }
+
+  .bio{
+    height:125px;
+    margin-left:10px;
+    margin-top: 20px;
+    font-family: Inria Serif;
+    font-size: 19px;
+  }
+
+  .edit-bio-btn{
+    border-radius: 15px;
+    border-width: 0px;
+    margin-top: 20px;
+    color:white;
+    background-color:rgba(200, 201, 227, 1) ;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    transition: all 0.3s ease;
+  }
+
+  .edit-bio-btn:hover {
+    box-shadow: rgba(147, 133, 226, 0.5) 0 1px 30px;
+    transform: scale(1.05);
+    background-color: rgba(180, 181, 207, 1);
+  }
+
+  .pet-profile-pic{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* reduced size for a mini circle */
+    height: 200px; /* reduced size for a mini circle */
+    overflow: hidden;
+    border-radius: 50%; /* keeps it circular */
+    margin-left: 20px;
+    margin-top: 10px;
+    transition: transform 0.5s ease;
+  }
+
+
+  .pet-info-top-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top:10px;
+    
+  }
+
+
+  .pet-profile-grid{
+    display: grid;
+    grid-template-rows: 400px 150px;
+    gap:30px;
+  
+  }
+
+
+  .pet-name{
+    padding-top: 10px;
+    font-size: 40px;
+    font-family: Istok Web;
+  }
+
+  .animal{
+    font-family: Istok Web;
+    font-size: 20px;
+    font-style: bold;
+    color:red;
+  }
+
+  .pet-info-middle{
+    font-family: Inria Sans;
+    font-size:20px;
+    margin-left: 30px;
+    margin-top:20px;
+  }
+
+  .pet-info-bottom-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top:15px;
+    padding-left:40px;
+  }
+
+  .lost-btn-catchphrase{
+    color:white;
+    margin-top:110px;
+    margin-left: 10px;
+    font-family: Inria Sans;
+    font-size: 20px;
+  }
+
+
+  .paw-pic{
+    width:85px;
+    height:85px;
+    filter: invert(1);
+    
+  }
+
+  .paw-button{
+    background-color: transparent;
+    border:none;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .paw-button:hover {
+    transform: scale(1.1) rotate(10deg);
+  }
+
+  .share-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+  }
+
+  .share-options-content {
+    position: relative;
+    background-color: white;
+    margin: 15% auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 250px;
+    border-radius: 15px;
+    box-shadow: rgba(147, 133, 226, 0.5) 0 1px 30px;
+    animation: modalSlideIn 0.4s ease-out;
+  }
+
+  .details-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 200px;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .share-guide {
+    margin-bottom: 8px;
+    padding: 5px;
+  }
+
+  .share-guide ol {
+    margin: 3px 0 3px 15px;
+    padding-left: 0;
+  }
+
+  .share-guide li {
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+  .pet-info-preview {
+    margin: 5px 0;
+    padding: 5px;
+  }
+
+  .pet-info-preview p {
+    margin: 3px 0;
+    font-size: 13px;
+  }
+
+  .photo-upload-section {
+    margin: 8px 0;
+    padding: 5px;
+  }
+
+  .message-section {
+    margin: 8px 0;
+  }
+
+  .message-section h3 {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .share-message-input {
+    height: 50px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+  }
+
+  .facebook-share-btn {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .facebook-share-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .photo-preview {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .photo-preview img {
+    max-width: 200px;
+    border-radius: 5px;
+  }
+
+  .details-modal .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;  /* Reduced width */
+    height: 350px; /* Reduced height */
+    padding: 20px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Adjust internal spacing */
+  .share-guide {
+    margin-bottom: 8px;
+    padding: 5px;
+  }
+
+  .share-guide ol {
+    margin: 3px 0 3px 15px;
+    padding-left: 0;
+  }
+
+  .share-guide li {
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+  .pet-details h2 {
+    margin: 8px 0 4px 0;
+    font-size: 16px;
+  }
+
+  .pet-info-preview {
+    margin: 5px 0;
+    padding: 5px;
+  }
+
+  .pet-info-preview p {
+    margin: 3px 0;
+    font-size: 13px;
+  }
+
+  .photo-upload-section {
+    margin: 8px 0;
+    padding: 5px;
+  }
+
+  .message-section {
+    margin: 8px 0;
+  }
+
+  .message-section h3 {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .share-message-input {
+    height: 50px;
+  }
+
+  /* Make sure the close button stays visible */
+  .close-details-modal {
+    position: sticky;
+    top: 0;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  /* Base Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+
+  /* Close Button */
+  .close-modal, .close-details-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close-modal:hover,
+  .close-details-modal:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Share Options */
+  .share-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .share-btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .share-btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .share-btn.facebook {
+    background-color: #1877f2;
+    color: white;
+  }
+
+  .share-btn.instagram {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    color: white;
+  }
+
+  .share-btn.share-both {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  /* Details Modal Specific Styles */
+  .details-modal .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .share-guide {
+    margin-bottom: 8px;
+    padding: 5px;
+  }
+
+  .share-guide ol {
+    margin: 3px 0 3px 15px;
+    padding-left: 0;
+  }
+
+  .share-guide li {
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+  .pet-details h2 {
+    margin: 8px 0 4px 0;
+    font-size: 16px;
+  }
+
+  .pet-info-preview {
+    margin: 5px 0;
+    padding: 5px;
+  }
+
+  .pet-info-preview p {
+    margin: 3px 0;
+    font-size: 13px;
+  }
+
+  .photo-upload-section {
+    margin: 8px 0;
+    padding: 5px;
+  }
+
+  .message-section {
+    margin: 8px 0;
+  }
+
+  .message-section h3 {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .share-message-input {
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+  }
+
+  .photo-preview {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .photo-preview img {
+    max-width: 200px;
+    border-radius: 5px;
+  }
+
+  .facebook-btn {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .facebook-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+
+
