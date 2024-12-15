@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>SecurePet</title>
+
+    <script src="scripts/auth_check.js"></script>
+    <script src="scripts/logout.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Headland+One&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/corner-circle.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    
+
+</head>
+
+    <body>
+      <div class="corner-circle"></div>
+
+      <div class = "navbar"> 
+        <a href ="frontpage.html" class = "site-name">SecurePet</a>
+        <a href = "home.html" class = "home">Home</a>
+        <a href = "adopt.html" class = "adopt">Adopt</a>
+        <a href = "lost.html" class = "lost">Lost</a>
+        <a href = "veteri.html" class = "vet-services">Veterinary Services</a>
+        <a href="javascript:void(0)" class="logout" onclick="handleLogout()">Logout</a>
+      </div>
+
+     <div class = "home-grid">
+
+      <div class="user-profile">
+        <div class="welcome-profile"> 
+          <a id="welcomeMessage">Hi, Loading...</a>
+        </div>
+
+        <div class = "profile-pic">
+        </div>
+        
+      </div>
+
+      <div class = "pet-profile-grid">
+        <div class = "pet-info">
+          
+          <div class = "pet-info-top"> 
+            <div class = "pet-info-top-grid">
+
+              <div class = "pet-profile-pic"> 
+                 <img src="https://i.pinimg.com/736x/b7/ed/00/b7ed009538f05ab8ffeb95c1f6167dbf.jpg">
+              </div>
+             
+            
+              <div class = "pet-name">
+                <div class="animal"></div>
+                <br>
+                <div class="name-of-pet"></div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <div class = "pet-info-middle"> 
+            <div class="address"> </div>
+          </div>
+
+          <div class = "pet-info-bottom">
+            <div class = "pet-info-bottom-grid">
+
+              <div class = "age">
+                <a>Age</a>
+                <div class="age-of-pet"></div>
+              </div>
+
+              <div class = "breed">
+                <a>Breed</a>
+                <div class="breed-of-pet"></div>
+              </div>
+
+              <div class = "sex">
+                <a>Sex</a>
+                <div class="sex-of-pet"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+        <div class = "lost-btn">
+          
+          <div class = "lost-btn-catchphrase">
+            <a>
+              Help is just around the corner
+            </a>
+          </div>
+
+          <div class = "lost-btn-paw">
+            
+            <div class ="paw-pic-div">
+              
+              <button class = "paw-button" onclick="openShareModal()">
+                <img class="paw-pic" src="../images/paw.png">
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class = "gallery-bio">
+
+        <div class = "gallery">
+          <a>gallery</a>
+        </div>
+
+        <div class = "bio">
+          <p id="bioText"></p>
+          <textarea id="bioEditor" style="display: none;"></textarea>
+          <button class="edit-bio-btn" onclick="toggleBioEdit()">Edit bio</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <script>
+        function toggleBioEdit() {
+            const bioText = document.getElementById('bioText');
+            const bioEditor = document.getElementById('bioEditor');
+            const editButton = document.querySelector('.edit-bio-btn');
+
+            if (bioText.style.display !== 'none') {
+                // Switch to edit mode
+                bioEditor.value = bioText.innerText;
+                bioText.style.display = 'none';
+                bioEditor.style.display = 'block';
+                editButton.textContent = 'Save';
+                
+                // Enhanced textarea styling
+                bioEditor.style.width = '90%';
+                bioEditor.style.height = '100px';
+                bioEditor.style.padding = '8px';
+                bioEditor.style.marginBottom = '10px';
+                bioEditor.style.fontFamily = 'Inria Serif';
+                bioEditor.style.fontSize = '19px';
+                bioEditor.style.border = '1px solid rgba(200, 201, 227, 1)';
+                bioEditor.style.borderRadius = '5px';
+                bioEditor.style.resize = 'none';
+                
+                // Auto focus the editor
+                bioEditor.focus();
+            } else {
+                // Save changes and switch back to display mode
+                const newBio = bioEditor.value.trim();
+                if (newBio) {
+                    bioText.innerText = newBio;
+                    // Here you could add an API call to save the bio to the database
+                }
+                bioText.style.display = 'block';
+                bioEditor.style.display = 'none';
+                editButton.textContent = 'Edit bio';
+            }
+        }
+    </script>
+
+    <div id="shareModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Share Lost Pet Alert</h2>
+        <p>Where would you like to share this alert?</p>
+        
+        <div class="share-options">
+          <button class="share-btn facebook" onclick="shareToFacebook()">
+            <img src="../images/facebook-icon.png" alt="Facebook">
+            Share to Facebook
+          </button>
+          
+          <button class="share-btn instagram" onclick="shareToInstagram()">
+            <img src="../images/instagram-icon.png" alt="Instagram">
+            Share to Instagram
+          </button>
+          
+          <button class="share-btn share-both" onclick="shareToBoth()">
+            Share to Both
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="detailsModal" class="modal details-modal">
+        <div class="modal-content">
+            <span class="close-details-modal">&times;</span>
+            
+            <!-- Guide Section -->
+            <div class="share-guide">
+                <h3>How to share your lost pet alert:</h3>
+                <ol>
+                    <li>Review your pet's information below</li>
+                    <li>Upload a clear, recent photo of your pet</li>
+                    <li>Customize the message if needed</li>
+                    <li>Click 'Share on Facebook' to post directly</li>
+                </ol>
+            </div>
+
+            <!-- Pet Details Section -->
+            <div class="pet-details">
+                <h2>Pet Information</h2>
+                <div class="pet-info-preview">
+                    <p><strong>Name:</strong> <span id="modal-pet-name"></span></p>
+                    <p><strong>Location:</strong> <span id="modal-pet-location"></span></p>
+                    <p><strong>Sex:</strong> <span id="modal-pet-sex"></span></p>
+                </div>
+            </div>
+
+            <!-- Photo Upload Section -->
+            <div class="photo-upload-section">
+                <h3>Upload Photo</h3>
+                <input type="file" id="petPhoto" accept="image/*">
+                <div id="photoPreview" class="photo-preview"></div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="message-section">
+                <h3>Alert Message</h3>
+                <textarea id="shareMessage" class="share-message-input"></textarea>
+            </div>
+
+            <!-- Facebook SDK -->
+            <div id="fb-root"></div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="facebookShareBtn" class="facebook-btn" disabled>
+                    Share on Facebook
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // First Modal Functions
+        function openShareModal() {
+            document.getElementById('shareModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.querySelector('.close-modal').onclick = function() {
+            document.getElementById('shareModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('shareModal')) {
+                document.getElementById('shareModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Facebook SDK Initialization
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '939900814742628',
+                xfbml: true,
+                version: 'v21.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Share Functions
+        function shareToFacebook() {
+            const detailsModal = document.getElementById('detailsModal');
+            detailsModal.style.display = 'block';
+
+            const petName = document.querySelector(".name-of-pet").textContent;
+            const location = document.querySelector(".address").textContent;
+            const sex = document.querySelector(".sex-of-pet").textContent;
+
+            document.getElementById('modal-pet-name').textContent = petName;
+            document.getElementById('modal-pet-location').textContent = location;
+            document.getElementById('modal-pet-sex').textContent = sex;
+
+            const defaultMessage = `LOST PET ALERT!\n\nMy pet ${petName} has gone missing.\nLast seen at: ${location}\nSex: ${sex}\n\nPlease contact me at [Your Phone Number] if found.\nAny information would be greatly appreciated.`;
+            
+            document.getElementById('shareMessage').value = defaultMessage;
+        }
+
+        function shareToInstagram() {
+            console.log('Sharing to Instagram');
+        }
+
+        function shareToBoth() {
+            shareToFacebook();
+            shareToInstagram();
+        }
+
+        // Photo Upload Handler
+        document.getElementById('petPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('photoPreview');
+                    preview.innerHTML = `<img src="${e.target.result}" style="max-width: 200px;">`;
+                    document.getElementById('facebookShareBtn').disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Facebook Share Button Handler
+        document.getElementById('facebookShareBtn').addEventListener('click', function() {
+            const photoFile = document.getElementById('petPhoto').files[0];
+            const message = document.getElementById('shareMessage').value;
+            
+            if (!photoFile) {
+                alert('Please upload a photo first');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('photoUrl', photoFile);
+            formData.append('name', document.getElementById('modal-pet-name').textContent);
+            formData.append('caption', message);
+
+            fetch('post_to_facebook.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert(result);
+                if (!result.includes('Error')) {
+                    document.getElementById('detailsModal').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to share on Facebook');
+            });
+        });
+
+        // Details Modal Close Button
+        document.querySelector('.close-details-modal').onclick = function() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if checkAuth is available
+            if (typeof window.checkAuth === 'undefined') {
+                console.error('Auth check function not loaded');
+                return;
+            }
+
+            console.log("Starting auth check...");
+            
+            // Now use checkAuth
+            window.checkAuth().then(() => {
+                console.log("Auth check passed, fetching pet data...");
+                
+                fetch('fetch_pet_data.php')
+                    .then(response => {
+                        console.log("Raw fetch response:", response);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Received pet data:", data);
+                        
+                        if (data.status === "success") {
+                            console.log("Successfully retrieved pet data:", data.data);
+                            
+                            // Update pet data
+                            document.querySelector(".name-of-pet").textContent = data.data.pet_name || 'No name';
+                            document.querySelector(".address").innerHTML = `<b>Address :</b> <br>${data.data.location || 'No address'}`;
+                            document.querySelector(".age-of-pet").textContent = data.data.age || 'N/A';
+                            document.querySelector(".breed-of-pet").textContent = data.data.category || 'N/A';
+                            document.querySelector(".sex-of-pet").textContent = data.data.sex || 'N/A';
+                            document.querySelector("#bioText").textContent = data.data.description || 'No description available';
+                            document.querySelector(".animal").textContent = data.data.category || 'Pet';
+                        } else {
+                            console.error("Error status in response:", data.message);
+                            showNoPetDataMessage();
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching pet data:", error);
+                        showErrorMessage();
+                    });
+            }).catch(error => {
+                console.error("Auth check failed:", error);
+            });
+        });
+
+        function showNoPetDataMessage() {
+            const defaultMessage = "No pet information available";
+            document.querySelector(".name-of-pet").textContent = "Add Your Pet";
+            document.querySelector(".address").innerHTML = "<b>Address :</b> <br>Not set";
+            document.querySelector(".age-of-pet").textContent = "-";
+            document.querySelector(".breed-of-pet").textContent = "-";
+            document.querySelector(".sex-of-pet").textContent = "-";
+            document.querySelector("#bioText").textContent = "Add a description for your pet";
+            document.querySelector(".animal").textContent = "Pet";
+        }
+
+        function showErrorMessage() {
+            console.error("Unable to load pet data");
+        }
+    </script>
+
+  
+    </body>
+
+
+</html>
